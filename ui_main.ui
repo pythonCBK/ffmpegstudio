@@ -1,0 +1,948 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>950</width>
+    <height>650</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>950</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>950</width>
+    <height>650</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>FFmpeg Studio v1.0</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/media/icon.png</normaloff>:/media/icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font-family: Inter;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="Frame1">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>9</y>
+      <width>463</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QWidget" name="layoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>11</y>
+       <width>421</width>
+       <height>531</height>
+      </rect>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="3" column="0">
+       <widget class="QLabel" name="FileCount">
+        <property name="font">
+         <font>
+          <family>Inter</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>0 files</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="txtStep1">
+        <property name="font">
+         <font>
+          <family>Inter</family>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>1. Add Files</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="btnClearList">
+        <property name="font">
+         <font>
+          <family>Inter</family>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string> Clear List</string>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::EditDelete"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>15</width>
+          <height>15</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QPushButton" name="btnAddFiles">
+        <property name="font">
+         <font>
+          <family>Inter</family>
+          <pointsize>13</pointsize>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="text">
+         <string> Add Files</string>
+        </property>
+        <property name="icon">
+         <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>15</width>
+          <height>15</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QListWidget" name="listFiles">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="font">
+         <font>
+          <family>Inter</family>
+          <pointsize>10</pointsize>
+         </font>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="Frame2">
+    <property name="geometry">
+     <rect>
+      <x>478</x>
+      <y>9</y>
+      <width>463</width>
+      <height>561</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="midLineWidth">
+     <number>0</number>
+    </property>
+    <widget class="QLabel" name="txtStep2">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>15</y>
+       <width>139</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>2. Output Settings</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtFormat">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>43</y>
+       <width>53</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Format</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtResolution">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>145</y>
+       <width>80</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Resolution</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtFPS">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>220</y>
+       <width>28</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>FPS</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtBitrate">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>295</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Bitrate (kbps)</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="KeepOriginal">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>115</y>
+       <width>160</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="toolTip">
+      <string>Keep empty the setting you do not want to change.</string>
+     </property>
+     <property name="text">
+      <string>Keep original properties</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtOutputPath">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>485</y>
+       <width>111</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Output Folder</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="BoxFormats">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>70</y>
+       <width>421</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Original format</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>mp4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>mkv</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>mov</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="BoxResolutions">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>174</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Custom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4K</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>UHD</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Quad HD</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2K</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Full HD</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>HD</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SVGA</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>VGA</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryFPS">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>247</y>
+       <width>211</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Specify it in positive values.</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryBitrate">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>321</y>
+       <width>211</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Video bitrate. Specified in kbit/s, in positive integer values.</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryPath">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>509</y>
+       <width>171</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnBrowse">
+     <property name="geometry">
+      <rect>
+       <x>385</x>
+       <y>505</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::FolderOpen"/>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>20</width>
+       <height>20</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryW">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>172</y>
+       <width>91</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Width. Specify it in positive integer values.</string>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryH">
+     <property name="geometry">
+      <rect>
+       <x>338</x>
+       <y>172</y>
+       <width>91</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Height. Specify it in positive integer values.</string>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="BoxFPS">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>249</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Custom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>120</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="BoxBitrate">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>324</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Custom</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10000 kbps</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5000 kbps</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2000 kbps</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1000 kbps</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>500 kbps</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="txtX">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>185</y>
+       <width>16</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>x</string>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="CropTheVideo">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>375</y>
+       <width>113</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>Crop the video</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtStart">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>405</y>
+       <width>41</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Start</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtEnd">
+     <property name="geometry">
+      <rect>
+       <x>196</x>
+       <y>405</y>
+       <width>31</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>End</string>
+     </property>
+    </widget>
+    <widget class="QTimeEdit" name="timeStart">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>426</y>
+       <width>149</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Format - hh:mm:ss</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="displayFormat">
+      <string>HH:mm:ss</string>
+     </property>
+    </widget>
+    <widget class="QTimeEdit" name="timeEnd">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>191</x>
+       <y>426</y>
+       <width>149</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Format - hh:mm:ss</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="displayFormat">
+      <string>HH:mm:ss</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtDash">
+     <property name="geometry">
+      <rect>
+       <x>176</x>
+       <y>425</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>19</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>-</string>
+     </property>
+    </widget>
+    <widget class="QPlainTextEdit" name="entryName">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>509</y>
+       <width>161</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="lineWrapMode">
+      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtNewName">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>485</y>
+       <width>131</width>
+       <height>19</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Output file name</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="Frame3">
+    <property name="geometry">
+     <rect>
+      <x>9</x>
+      <y>580</y>
+      <width>931</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Shape::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Shadow::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="btnConvert">
+     <property name="geometry">
+      <rect>
+       <x>740</x>
+       <y>10</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Convert all selected files.</string>
+     </property>
+     <property name="statusTip">
+      <string/>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string> Convert</string>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::SyncSynchronizing"/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnAbout">
+     <property name="geometry">
+      <rect>
+       <x>690</x>
+       <y>10</y>
+       <width>40</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset theme="QIcon::ThemeIcon::InsertImage"/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="txtStatus">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>15</y>
+       <width>591</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>11</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>All files were processed without errors.</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>1070</x>
+      <y>220</y>
+      <width>421</width>
+      <height>231</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
