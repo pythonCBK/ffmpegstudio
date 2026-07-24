@@ -5,8 +5,8 @@
 > Also, code is pretty messy TwT. Thank you for understanding!
 
 > **FFmpeg** <br>
-> FFmpeg is bundled with this application. FFmpeg is licensed under the LGPL/GPL. See the LICENSE file for details.
-______________  
+> Application based on FFmpeg. FFmpeg is licensed under the LGPL/GPL. See the LICENSE file for details.
+______________ 
 
 
 ## 📖**Information**
