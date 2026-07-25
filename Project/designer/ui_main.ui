@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>FFmpeg Studio v1.1</string>
+   <string>FFmpeg Studio v1.1.1</string>
   </property>
   <property name="windowIcon">
    <iconset resource="resources.qrc">
@@ -207,7 +207,7 @@
       <rect>
        <x>21</x>
        <y>43</y>
-       <width>53</width>
+       <width>151</width>
        <height>21</height>
       </rect>
      </property>
@@ -416,78 +416,6 @@
       </property>
      </item>
     </widget>
-    <widget class="QPlainTextEdit" name="entryFPS">
-     <property name="geometry">
-      <rect>
-       <x>218</x>
-       <y>247</y>
-       <width>211</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>Specify it in positive values.</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="entryBitrate">
-     <property name="geometry">
-      <rect>
-       <x>218</x>
-       <y>321</y>
-       <width>211</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>Video bitrate. Specified in kbit/s, in positive integer values.</string>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="entryPath">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>509</y>
-       <width>171</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-     </property>
-    </widget>
     <widget class="QPushButton" name="btnBrowse">
      <property name="geometry">
       <rect>
@@ -517,50 +445,6 @@
        <width>20</width>
        <height>20</height>
       </size>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="entryW">
-     <property name="geometry">
-      <rect>
-       <x>218</x>
-       <y>172</y>
-       <width>91</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>Width. Specify it in positive integer values.</string>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-     </property>
-    </widget>
-    <widget class="QPlainTextEdit" name="entryH">
-     <property name="geometry">
-      <rect>
-       <x>338</x>
-       <y>172</y>
-       <width>91</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="toolTip">
-      <string>Height. Specify it in positive integer values.</string>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
      </property>
     </widget>
     <widget class="QComboBox" name="BoxFPS">
@@ -655,7 +539,7 @@
      <property name="geometry">
       <rect>
        <x>320</x>
-       <y>185</y>
+       <y>180</y>
        <width>16</width>
        <height>16</height>
       </rect>
@@ -680,7 +564,7 @@
       <string notr="true"/>
      </property>
      <property name="text">
-      <string>Crop the video</string>
+      <string>Trim by time</string>
      </property>
     </widget>
     <widget class="QLabel" name="txtStart">
@@ -796,28 +680,6 @@
       <string>-</string>
      </property>
     </widget>
-    <widget class="QPlainTextEdit" name="entryName">
-     <property name="geometry">
-      <rect>
-       <x>21</x>
-       <y>509</y>
-       <width>161</width>
-       <height>34</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Inter</family>
-       <pointsize>13</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="lineWrapMode">
-      <enum>QPlainTextEdit::LineWrapMode::NoWrap</enum>
-     </property>
-    </widget>
     <widget class="QLabel" name="txtNewName">
      <property name="geometry">
       <rect>
@@ -835,6 +697,114 @@
      </property>
      <property name="text">
       <string>Output file name</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryW">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>172</y>
+       <width>91</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Width. Specify it in positive integer value.</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryH">
+     <property name="geometry">
+      <rect>
+       <x>338</x>
+       <y>172</y>
+       <width>91</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Height. Specify it in positive integer value.</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryFPS">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>247</y>
+       <width>211</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Specify it in positive value.</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryBitrate">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>321</y>
+       <width>211</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="toolTip">
+      <string>Video bitrate. Specified in kbit/s, positive integer value.</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryName">
+     <property name="geometry">
+      <rect>
+       <x>21</x>
+       <y>509</y>
+       <width>161</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="entryPath">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>509</y>
+       <width>171</width>
+       <height>34</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Inter</family>
+       <pointsize>13</pointsize>
+      </font>
      </property>
     </widget>
    </widget>

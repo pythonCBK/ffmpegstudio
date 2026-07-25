@@ -2,16 +2,17 @@ import sys
 import random
 import subprocess
 import os
-import time
-from threading import Thread
 
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 from PySide6.QtCore import Qt, QTimer
+from PySide6.QtGui import QIntValidator
 import resources_rc
 
 
 
-### ====== Переменные ====== ###
+#   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
+#   Переменные   =-=-=-=-=-=-=-=-=-=-=-= #####
+#   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
 
 FilesList = []
 
@@ -52,14 +53,27 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        ### ===== При запуске ===== ###
+
+        #   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
+        #   При запуске   =-=-=-=-=-=-=-=-=-=-=-= #####
+        #   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
 
         # Смена сплэша
         self.ui.txtStatus.setText(random.choice(splashes))
+
+        # Установка ограниченний на ввод
+        self.ui.entryW.setValidator(QIntValidator(1, 16384))
+        self.ui.entryH.setValidator(QIntValidator(1, 16384))
+
+        self.ui.entryBitrate.setValidator(QIntValidator(1, 1000000))
+        self.ui.entryFPS.setValidator(QIntValidator(1, 1000000))
     
 
 
-        ### ===== Checkbox ===== ###
+        #   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
+        #   Инициализация кнопок    =-=-=-=-=-=-=-=-=-=-=-= #####
+        #   -=-=-=-=-=  =-=-=-=-=-=-=-=-=-=-=-= #####
+
 
         # KeepOriginal - Checkbox
         self.ui.KeepOriginal.stateChanged.connect(self.KeepOriginalStatus)
@@ -67,8 +81,6 @@ class MainWindow(QMainWindow):
         # CropTheVideo - Checkbox
         self.ui.CropTheVideo.stateChanged.connect(self.CropTheVideoStatus)
 
-
-        ### ===== ComboBox ===== ###
 
         # BoxResolutions - ComboBox
         self.ui.BoxResolutions.currentTextChanged.connect(self.resolution_changed)
@@ -79,8 +91,6 @@ class MainWindow(QMainWindow):
         # BoxBitrate - ComboBox
         self.ui.BoxBitrate.currentTextChanged.connect(self.Bitrate_changed)
 
-
-        ### ===== Button ===== ###
 
         # btnAddFiles - Button
         self.ui.btnAddFiles.clicked.connect(self.addfiles)
@@ -170,48 +180,48 @@ class MainWindow(QMainWindow):
     def resolution_changed(self, text):
 
         if text == '4K':
-            self.ui.entryW.setPlainText('4096')
-            self.ui.entryH.setPlainText('2160')
+            self.ui.entryW.setText('4096')
+            self.ui.entryH.setText('2160')
             self.readonlyRES()
 
         elif text == 'UHD':
-            self.ui.entryW.setPlainText('3840')
-            self.ui.entryH.setPlainText('2160')
+            self.ui.entryW.setText('3840')
+            self.ui.entryH.setText('2160')
             self.readonlyRES()
 
         elif text == 'Quad HD':
-            self.ui.entryW.setPlainText('2560')
-            self.ui.entryH.setPlainText('1440')
+            self.ui.entryW.setText('2560')
+            self.ui.entryH.setText('1440')
             self.readonlyRES()
 
         elif text == '2K':
-            self.ui.entryW.setPlainText('2048')
-            self.ui.entryH.setPlainText('1080')
+            self.ui.entryW.setText('2048')
+            self.ui.entryH.setText('1080')
             self.readonlyRES()
 
         elif text == 'Full HD':
-            self.ui.entryW.setPlainText('1920')
-            self.ui.entryH.setPlainText('1080')
+            self.ui.entryW.setText('1920')
+            self.ui.entryH.setText('1080')
             self.readonlyRES()
 
         elif text == 'HD':
-            self.ui.entryW.setPlainText('1280')
-            self.ui.entryH.setPlainText('720')
+            self.ui.entryW.setText('1280')
+            self.ui.entryH.setText('720')
             self.readonlyRES()
 
         elif text == 'SVGA':
-            self.ui.entryW.setPlainText('800')
-            self.ui.entryH.setPlainText('600')
+            self.ui.entryW.setText('800')
+            self.ui.entryH.setText('600')
             self.readonlyRES()
 
         elif text == 'VGA':
-            self.ui.entryW.setPlainText('640')
-            self.ui.entryH.setPlainText('480')
+            self.ui.entryW.setText('640')
+            self.ui.entryH.setText('480')
             self.readonlyRES()
 
         else:
-            self.ui.entryW.setPlainText('')
-            self.ui.entryH.setPlainText('')
+            self.ui.entryW.setText('')
+            self.ui.entryH.setText('')
             
             self.ui.entryW.setReadOnly(False)
             self.ui.entryH.setReadOnly(False)
@@ -224,19 +234,19 @@ class MainWindow(QMainWindow):
     def fps_changed(self, text):
 
         if text == '120':
-            self.ui.entryFPS.setPlainText('120')
+            self.ui.entryFPS.setText('120')
             self.readonlyFPS()
 
         elif text == '60':
-            self.ui.entryFPS.setPlainText('60')
+            self.ui.entryFPS.setText('60')
             self.readonlyFPS()
 
         elif text == '30':
-            self.ui.entryFPS.setPlainText('30')
+            self.ui.entryFPS.setText('30')
             self.readonlyFPS()
 
         else:
-            self.ui.entryFPS.setPlainText('')
+            self.ui.entryFPS.setText('')
             
             self.ui.entryFPS.setReadOnly(False)
 
@@ -248,11 +258,11 @@ class MainWindow(QMainWindow):
     def Bitrate_changed(self, text):
 
         if text == 'Custom':
-            self.ui.entryBitrate.setPlainText('')
+            self.ui.entryBitrate.setText('')
             self.ui.entryBitrate.setReadOnly(False)
 
         else:
-            self.ui.entryBitrate.setPlainText(text.replace(" kbps", ""))
+            self.ui.entryBitrate.setText(text.replace(" kbps", ""))
             self.readonlyBIT()
 
 
@@ -319,7 +329,7 @@ class MainWindow(QMainWindow):
     def outPath(self):
         path = QFileDialog.getExistingDirectory(self, "Выберите папку сохранения")
 
-        self.ui.entryPath.setPlainText(path)
+        self.ui.entryPath.setText(path)
 
 
 
@@ -362,23 +372,23 @@ class MainWindow(QMainWindow):
         cropEND = self.ui.timeEnd.time().toString("HH:mm:ss")
 
         # Разрешение видео.
-        width = self.ui.entryW.toPlainText()
-        height = self.ui.entryH.toPlainText()
+        width = self.ui.entryW.text().strip()
+        height = self.ui.entryH.text().strip()
 
         # FPS видео.
-        fps = self.ui.entryFPS.toPlainText()
+        fps = self.ui.entryFPS.text().strip()
 
         # Битрейт видео.
-        bitrate = self.ui.entryBitrate.toPlainText()
+        bitrate = self.ui.entryBitrate.text().strip()
 
         # Новое разрешение файла.
         selected_format = self.ui.BoxFormats.currentText().lower()
 
         # Новое название выходного файла.
-        outputname = self.ui.entryName.toPlainText()
+        outputname = self.ui.entryName.text().strip()
 
         # Путь сохранения выходных файлов
-        outputpath = self.ui.entryPath.toPlainText()
+        outputpath = self.ui.entryPath.text().strip()
 
 
 
@@ -462,8 +472,14 @@ class MainWindow(QMainWindow):
 
             # Проверка выполнять ли обрезку по времени.
             if self.ui.CropTheVideo.isChecked():
-                command += ['-ss', cropSTART,
-                            '-to', cropEND]
+
+                # Проверка что бы конечное время было больше начального.
+                if cropEND > cropSTART:
+                    command += ['-ss', cropSTART,
+                                '-to', cropEND]
+                else:
+                    self.set_status('The end time must be later than the start time.', '#f6b233')
+                    return
             
             # Добавить файл с которым работаем.
             command += ['-i', file]
@@ -476,20 +492,12 @@ class MainWindow(QMainWindow):
                 # Проверяем указано ли разрешения.
                 if width and height:
 
-                    # Проверяем являются ли данные целыми числами.
-                    try:
-                        width = int(width)
-                        height = int(height)
-                    except ValueError:
-                        self.set_status('Both width and height must be integers.', '#f6b233')
-                        return
-
-                    # Проверяем являются ли данные положительными целыми числами.   
-                    if width > 0 and height > 0:
-                        command += ['-vf',
-                                f'scale={width}:{height}']
+                    # Проверяем что оба значения положительные.
+                    if int(width) > 0 and int(height) >0:
+                      command += ['-vf',
+                            f'scale={width}:{height}']
                     else:
-                        self.set_status('Both width and height must be greater than zero.', '#f6b233')
+                        self.set_status('The width and height must be positive integers greater than zero.', '#f6b233')
                         return
 
                 elif width or height:
@@ -502,21 +510,12 @@ class MainWindow(QMainWindow):
                 # Проверяем указан ли FPS.
                 if fps:
 
-                    # Проверяем является ли FPS целым числом.
-                    try:
-                        fps = int(fps)
-                    except ValueError:
-                        self.set_status('FPS value must be an integer.', '#f6b233')
-                        return
-
-                     # Проверяем является ли FPS положительным целыми числами.   
-                    if fps > 0:
+                    # Проверяем что FPS больше 0
+                    if int(fps) > 0:
                         command += ['-r', fps]
                     else:
-                        self.set_status('FPS value must be greater than zero.', '#f6b233')
+                        self.set_status('FPS must be a positive integer greater than zero.', '#f6b233')
                         return
-
-
 
 
 
@@ -524,20 +523,14 @@ class MainWindow(QMainWindow):
                 # Проверяем указан ли битрейт.
                 if bitrate:
 
-                    # Проверяем является ли битрейт целым числом.
-                    try:
-                        bitrate = int(bitrate)
-                    except ValueError:
-                        self.set_status('Bitrate value must be an integer.', '#f6b233')
-                        return
-
-                    # Проверяем является ли битрейт положительным целыми числами.   
-                    if bitrate > 0:
+                    # Проверяем что битрейта больше 0
+                    if int(bitrate) > 0:
                         command += ['-b:v',
                                     f'{bitrate}k']
                     else:
-                        self.set_status('Bitrate value must be greater than zero.', '#f6b233')
+                        self.set_status('Bitrate must be a positive integer greater than zero.', '#f6b233')
                         return
+
 
 
 
