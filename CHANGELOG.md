@@ -2,6 +2,32 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 
+
+## [1.1.2] - 30-07-2026
+
+### Added
+- Audio qauality settings.
+- Hiding the FFmpeg console while it is running.
+
+
+  
+## [1.1.1] - 26-07-2026
+
+### Added
+- Replaced QPlainTextEdit with QLineEdit, improving both the UI appearance and overall application usability.
+
+### Fixed
+- Fixed issues related to user input validation.
+- Renamed conversion options for better clarity:
+  Crop the video → Trim by time
+- Fixed the application icon size.
+
+### Other changes
+- Updated the application version format:
+  x.x → x.x.x
+
+
+
 ## [1.1] - 24-07-2026
 
 ### Added
