@@ -91,6 +91,9 @@ class MainWindow(QMainWindow):
         # BoxBitrate - ComboBox
         self.ui.BoxBitrate.currentTextChanged.connect(self.Bitrate_changed)
 
+        # BoxSound - ComboBox
+        self.ui.BoxSound.currentTextChanged.connect(self.Sound_changed)
+
 
         # btnAddFiles - Button
         self.ui.btnAddFiles.clicked.connect(self.addfiles)
@@ -251,7 +254,7 @@ class MainWindow(QMainWindow):
             self.ui.entryFPS.setReadOnly(False)
 
 
-    # BitrateFPS - ComboBox
+    # BoxBitrate - ComboBox
     def readonlyBIT(self):
         self.ui.entryBitrate.setReadOnly(True)
     
@@ -264,6 +267,21 @@ class MainWindow(QMainWindow):
         else:
             self.ui.entryBitrate.setText(text.replace(" kbps", ""))
             self.readonlyBIT()
+
+
+    # BoxSound - ComboBox
+    def readonlySOUND(self):
+        self.ui.entrySound.setReadOnly(True)
+    
+    def Sound_changed(self, text):
+
+        if text == 'Custom':
+            self.ui.entrySound.setText('')
+            self.ui.entrySound.setReadOnly(False)
+
+        else:
+            self.ui.entrySound.setText(text.replace(" kbps", ""))
+            self.readonlySOUND()
 
 
 
@@ -381,6 +399,9 @@ class MainWindow(QMainWindow):
         # Битрейт видео.
         bitrate = self.ui.entryBitrate.text().strip()
 
+        # Качество звука.
+        sound = self.ui.entrySound.text().strip()
+
         # Новое разрешение файла.
         selected_format = self.ui.BoxFormats.currentText().lower()
 
@@ -400,7 +421,8 @@ class MainWindow(QMainWindow):
         # Проверка наличия FFmpeg и его работы.
         try:
             ffmpegcheck = subprocess.run(["ffmpeg", "-version"],
-                            capture_output=True, text=True)
+                            capture_output=True, text=True,
+                            creationflags=subprocess.CREATE_NO_WINDOW)
             
         except FileNotFoundError:
             self.set_status('Looks like there is no FFmpeg on your device. Download it from the official website.', '#f63333')
@@ -480,6 +502,10 @@ class MainWindow(QMainWindow):
                 else:
                     self.set_status('The end time must be later than the start time.', '#f6b233')
                     return
+
+
+
+
             
             # Добавить файл с которым работаем.
             command += ['-i', file]
@@ -528,11 +554,21 @@ class MainWindow(QMainWindow):
                         command += ['-b:v',
                                     f'{bitrate}k']
                     else:
-                        self.set_status('Bitrate must be a positive integer greater than zero.', '#f6b233')
+                        self.set_status('Bitrate must be greater than zero.', '#f6b233')
                         return
 
 
+                ### === Проверка звука === ###
+                # Проверяем указан ли битрейт звука.
+                if sound:
 
+                    # Проверяем что битрейта аудио больше 0
+                    if int(sound) > 0:
+                        command += ['-b:a',
+                                    f'{sound}k']
+                    else:
+                        self.set_status('Audio bitrate must be greater than zero.', '#f6b233')
+                        return
 
 
 
@@ -544,8 +580,9 @@ class MainWindow(QMainWindow):
 
             # Указать путь сохранения и названеия выходного файла.
             command += [output_file]
+            print(command)
             
-            convert = subprocess.run(command)
+            convert = subprocess.run(command, creationflags=subprocess.CREATE_NO_WINDOW)
             result = convert.returncode
 
             if result == 0:

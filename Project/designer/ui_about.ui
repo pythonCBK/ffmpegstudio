@@ -32,7 +32,7 @@
    <string>About FFmpeg Studio</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="resources.qrc">
+   <iconset>
     <normaloff>:/media/icon.png</normaloff>:/media/icon.png</iconset>
   </property>
   <property name="styleSheet">
@@ -77,7 +77,7 @@
       <string/>
      </property>
      <property name="pixmap">
-      <pixmap resource="resources.qrc">:/media/logo.png</pixmap>
+      <pixmap>:/media/logo.png</pixmap>
      </property>
      <property name="scaledContents">
       <bool>true</bool>
