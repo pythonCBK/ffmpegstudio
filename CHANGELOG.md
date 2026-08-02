@@ -14,7 +14,9 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Other changes
 - Updated the versions format to the original one:
+  
   x.x.x → x.x
+  
   Sub-versions will be indicated in x.x.x format.
 
   
