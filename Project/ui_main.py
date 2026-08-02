@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QSize(950, 700))
         MainWindow.setMaximumSize(QSize(950, 700))
         icon = QIcon()
-        icon.addFile(u":/media/icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
+        icon.addFile(u":/Media/icon.png", QSize(), QIcon.Mode.Normal, QIcon.State.Off)
         MainWindow.setWindowIcon(icon)
         MainWindow.setStyleSheet(u"font-family: Inter;")
         self.centralwidget = QWidget(MainWindow)
@@ -300,7 +300,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"FFmpeg Studio v1.1.2", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"FFmpeg Studio v1.3", None))
         self.FileCount.setText(QCoreApplication.translate("MainWindow", u"0 files", None))
         self.txtStep1.setText(QCoreApplication.translate("MainWindow", u"1. Add Files", None))
         self.btnClearList.setText(QCoreApplication.translate("MainWindow", u" Clear List", None))
