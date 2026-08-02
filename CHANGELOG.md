@@ -48,5 +48,5 @@ All notable changes to this project will be documented in this file. The format 
 - First version release.
 
 <p align="left">
-  <img src="https://media.discordapp.net/attachments/1350892543033872515/1529867075605237760/image.png?ex=6a637f3e&is=6a622dbe&hm=8383e293978776342ab8112b696f4222f895268fcc40644943ab695ae7239ed3&=&format=webp&quality=lossless&width=1190&height=853" alt="Interface Screenshot" width="750" heigh="400">
+  <img src="https://media.discordapp.net/attachments/1350892543033872515/1529867075605237760/image.png?ex=6a70057e&is=6a6eb3fe&hm=382a51dbb112119eb44ef571f5f49f2fd96434c2cfc8f169452df66fcda1a600&=&format=webp&quality=lossless&width=1190&height=853" alt="Interface Screenshot" width="750" heigh="400">
 </p>
