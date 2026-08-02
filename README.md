@@ -22,4 +22,4 @@ If you want to work with source code make sure that **Python** is installed. You
 ```python
 pip install pyside6-tools
 ```
-If you experinece any problems with FFmpeg you should downoad it from [the oficiall website.](https://www.ffmpeg.org/)
+If you experinece any problems with FFmpeg you should downoad it from [the official website.](https://www.ffmpeg.org/)
